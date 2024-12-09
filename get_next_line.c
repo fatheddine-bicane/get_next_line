@@ -12,23 +12,30 @@
 
 #include "get_next_line.h"
 
-char	*get_next_line(int fd)
+static char	*read_from_fd(int	fd)
 {
-	char		*buffer;
-	size_t		bytes_read;
+	char				*buffer;
+	size_t			bytes_read;
 	static int	i = 1;
-	
-	//i = 1;
-	printf("malloc#[%d]---", i++);
+
+	printf("malloc[%d]---", i++);
 	buffer = malloc((size_t)BUFFER_SIZE + 1);
 	if (!buffer)
-		return (0);
+		return	(NULL);
 	if (fd <= 0)
-		return (0);
+		return (NULL);
 	bytes_read = read(fd, buffer, BUFFER_SIZE);
 	if (bytes_read <= 0)
-		return (free(buffer), 0);
+		return (free (buffer), NULL);
 	buffer[BUFFER_SIZE] = 0;
+	return(buffer);
+}
+
+char	*get_next_line(int fd)
+{
+	char *buffer;
+	
+	buffer = read_from_fd(fd);
 	return (buffer);
 }
 
