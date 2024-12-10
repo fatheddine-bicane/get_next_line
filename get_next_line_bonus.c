@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbicane <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 15:26:17 by fbicane           #+#    #+#             */
-/*   Updated: 2024/12/10 18:25:54 by fbicane          ###   ########.fr       */
+/*   Created: 2024/12/10 17:24:50 by fbicane           #+#    #+#             */
+/*   Updated: 2024/12/10 18:37:11 by fbicane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*get_the_reminder(char *container)
 {
@@ -74,23 +74,23 @@ static char	*read_from_fd(int fd, char *container)
 
 char	*get_next_line(int fd)
 {
-	static char	*container;
+	static char	*container[FD];
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (free (container), NULL);
-	if (!container)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > FD)
+		return (free (container[fd]), NULL);
+	if (!container[fd])
 	{
-		container = malloc(1 * sizeof (char));
-		if (!container)
+		container[fd] = malloc(1 * sizeof (char));
+		if (!container[fd])
 			return (NULL);
-		*container = 0;
+		*container[fd] = 0;
 	}
-	if (!ft_strchr(container, '\n'))
-		container = read_from_fd(fd, container);
+	if (!ft_strchr(container[fd], '\n'))
+		container[fd] = read_from_fd(fd, container[fd]);
 	if (!container)
-		return (free (container), NULL);
-	line = get_the_newline(container);
-	container = get_the_reminder(container);
+		return (free (container[fd]), NULL);
+	line = get_the_newline(container[fd]);
+	container[fd] = get_the_reminder(container[fd]);
 	return (line);
 }
