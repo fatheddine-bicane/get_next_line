@@ -6,7 +6,7 @@
 /*   By: fbicane <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 17:24:50 by fbicane           #+#    #+#             */
-/*   Updated: 2024/12/10 18:37:11 by fbicane          ###   ########.fr       */
+/*   Updated: 2024/12/10 20:27:04 by fbicane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,24 @@ char	*get_next_line(int fd)
 	}
 	if (!ft_strchr(container[fd], '\n'))
 		container[fd] = read_from_fd(fd, container[fd]);
-	if (!container)
+	if (!container[fd])
 		return (free (container[fd]), NULL);
 	line = get_the_newline(container[fd]);
 	container[fd] = get_the_reminder(container[fd]);
 	return (line);
+}
+int main()
+{
+	int fd1, fd2, fd3;
+	
+	fd1 = open("file1.txt", O_RDONLY);
+	fd2 = open("file2.txt", O_RDONLY);
+	fd3 = open("file3.txt", O_RDONLY);
+	char *buffer;
+	while ((buffer = get_next_line(42)))
+	{
+		printf("%s",buffer);
+		free(buffer);
+	}
+	
 }
