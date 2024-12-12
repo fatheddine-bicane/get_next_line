@@ -6,7 +6,7 @@
 /*   By: fbicane <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 15:26:17 by fbicane           #+#    #+#             */
-/*   Updated: 2024/12/12 13:46:20 by fbicane          ###   ########.fr       */
+/*   Updated: 2024/12/12 14:19:21 by fbicane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static char	*get_the_reminder(char *container)
 	temp_container = ft_strchr(container, '\n');
 	if (!temp_container)
 		return (free(container), NULL);
-	new_container = ft_strdup(temp_container + 1);	
+	new_container = ft_strdup(temp_container + 1);
 	free(container);
 	return (new_container);
 }
