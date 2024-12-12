@@ -6,7 +6,7 @@
 /*   By: fbicane <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 17:25:14 by fbicane           #+#    #+#             */
-/*   Updated: 2024/12/10 18:25:30 by fbicane          ###   ########.fr       */
+/*   Updated: 2024/12/12 14:43:58 by fbicane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,29 @@ char	*ft_strchr(const char *str, int ch)
 	return (0);
 }
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
+	unsigned char	*s;
+	unsigned char	*d;
 	size_t			i;
-	unsigned char	*dest_tc;
-	unsigned char	*src_tc;
 
-	i = 0;
-	dest_tc = ((unsigned char *)(dest));
-	src_tc = ((unsigned char *)(src));
-	while (i < n)
+	s = (unsigned char *)src;
+	d = (unsigned char *)dest;
+	if (!s && !d)
+		return (NULL);
+	if (n == 0)
+		return (dest);
+	if (dest > src)
+		while (n-- > 0)
+			d[n] = s[n];
+	else
 	{
-		dest_tc[i] = src_tc[i];
-		i++;
+		i = 0;
+		while (i < n)
+		{
+			d[i] = s[i];
+			i++;
+		}
 	}
 	return (dest);
 }
@@ -88,6 +98,6 @@ char	*ft_strdup(const char *s1)
 	s1_dup = (char *)malloc((ft_strlen(s1) + 1));
 	if (!s1_dup)
 		return (0);
-	ft_memcpy(s1_dup, s1, (ft_strlen(s1) + 1));
+	ft_memmove(s1_dup, s1, (ft_strlen(s1) + 1));
 	return (s1_dup);
 }

@@ -6,7 +6,7 @@
 /*   By: fbicane <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 17:24:50 by fbicane           #+#    #+#             */
-/*   Updated: 2024/12/12 14:18:51 by fbicane          ###   ########.fr       */
+/*   Updated: 2024/12/12 14:29:18 by fbicane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static char	*get_the_newline(char *container)
 	new_line = malloc((i + 1) * sizeof(char));
 	if (!new_line)
 		return (free (container), NULL);
-	new_line = ft_memcpy(new_line, container, i);
+	new_line = ft_memmove(new_line, container, i);
 	new_line[i] = '\0';
 	return (new_line);
 }

@@ -6,7 +6,7 @@
 /*   By: fbicane <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 17:25:28 by fbicane           #+#    #+#             */
-/*   Updated: 2024/12/12 11:24:15 by fbicane          ###   ########.fr       */
+/*   Updated: 2024/12/12 14:27:25 by fbicane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 #  define FD 1024
 # endif
 
-void	*ft_memcpy(void *dest, const void *src, size_t n);
+void	*ft_memmove(void *dest, const void *src, size_t n);
 char	*ft_strchr(const char *str, int ch);
 char	*ft_strjoin(char *s1, char *s2);
 size_t	ft_strlen(const char *str);

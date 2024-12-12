@@ -6,7 +6,7 @@
 /*   By: fbicane <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 15:21:15 by fbicane           #+#    #+#             */
-/*   Updated: 2024/12/12 11:24:19 by fbicane          ###   ########.fr       */
+/*   Updated: 2024/12/12 14:27:14 by fbicane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 #  define BUFFER_SIZE 10
 # endif
 
-void	*ft_memcpy(void *dest, const void *src, size_t n);
+void	*ft_memmove(void *dest, const void *src, size_t n);
 char	*ft_strchr(const char *str, int ch);
 char	*ft_strjoin(char *s1, char *s2);
 size_t	ft_strlen(const char *str);

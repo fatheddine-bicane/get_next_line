@@ -6,7 +6,7 @@
 /*   By: fbicane <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 15:20:53 by fbicane           #+#    #+#             */
-/*   Updated: 2024/12/12 14:25:31 by fbicane          ###   ########.fr       */
+/*   Updated: 2024/12/12 14:43:16 by fbicane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,23 +38,6 @@ char	*ft_strchr(const char *str, int ch)
 	return (0);
 }
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
-{
-	size_t			i;
-	unsigned char	*dest_tc;
-	unsigned char	*src_tc;
-
-	i = 0;
-	dest_tc = ((unsigned char *)(dest));
-	src_tc = ((unsigned char *)(src));
-	while (i < n)
-	{
-		dest_tc[i] = src_tc[i];
-		i++;
-	}
-	return (dest);
-}
-
 char	*ft_strjoin(char *s1, char *s2)
 {
 	size_t	i;
@@ -81,17 +64,6 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (s1_s2);
 }
 
-char	*ft_strdup(const char *s1)
-{
-	char	*s1_dup;
-
-	s1_dup = (char *)malloc((ft_strlen(s1) + 1));
-	if (!s1_dup)
-		return (0);
-	ft_memcpy(s1_dup, s1, (ft_strlen(s1) + 1));
-	return (s1_dup);
-}
-
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	unsigned char	*s;
@@ -100,7 +72,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 
 	s = (unsigned char *)src;
 	d = (unsigned char *)dest;
-
+	if (!s && !d)
+		return (NULL);
 	if (n == 0)
 		return (dest);
 	if (dest > src)
@@ -108,6 +81,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 			d[n] = s[n];
 	else
 	{
+		i = 0;
 		while (i < n)
 		{
 			d[i] = s[i];
@@ -115,4 +89,15 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		}
 	}
 	return (dest);
+}
+
+char	*ft_strdup(const char *s1)
+{
+	char	*s1_dup;
+
+	s1_dup = (char *)malloc((ft_strlen(s1) + 1));
+	if (!s1_dup)
+		return (0);
+	ft_memmove(s1_dup, s1, (ft_strlen(s1) + 1));
+	return (s1_dup);
 }
