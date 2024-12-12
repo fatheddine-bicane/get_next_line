@@ -6,7 +6,7 @@
 /*   By: fbicane <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 15:20:53 by fbicane           #+#    #+#             */
-/*   Updated: 2024/12/10 18:24:49 by fbicane          ###   ########.fr       */
+/*   Updated: 2024/12/12 13:51:26 by fbicane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,32 @@ char	*ft_strdup(const char *s1)
 		return (0);
 	ft_memcpy(s1_dup, s1, (ft_strlen(s1) + 1));
 	return (s1_dup);
+}
+
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	unsigned char	*dest_tc;
+	unsigned char	*src_tc;
+	size_t			i;
+
+	if (n == 0)
+		return (dest);
+	dest_tc = ((unsigned char *)(dest));
+	src_tc = ((unsigned char *)(src));
+	if (dest_tc <= src_tc)
+	{
+		i = 0;
+		while (i < n)
+			{
+				dest_tc[i] = src_tc[i];
+				i++;
+			}
+	}
+	else if (dest_tc > src_tc)
+	{
+		i = n -1;
+		while (i-- >= 0)
+			dest_tc[i] = src_tc[i];
+	}
+	return (dest);
 }

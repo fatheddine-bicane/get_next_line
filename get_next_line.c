@@ -6,7 +6,7 @@
 /*   By: fbicane <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 15:26:17 by fbicane           #+#    #+#             */
-/*   Updated: 2024/12/12 11:19:49 by fbicane          ###   ########.fr       */
+/*   Updated: 2024/12/12 13:46:20 by fbicane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static char	*get_the_reminder(char *container)
 	temp_container = ft_strchr(container, '\n');
 	if (!temp_container)
 		return (free(container), NULL);
-	new_container = ft_strdup(temp_container + 1);
+	new_container = ft_strdup(temp_container + 1);	
 	free(container);
 	return (new_container);
 }
@@ -41,7 +41,7 @@ static char	*get_the_newline(char *container)
 		i++;
 	new_line = malloc((i + 1) * sizeof(char));
 	if (!new_line)
-		return (NULL);
+		return (free (container), NULL);
 	new_line = ft_memcpy(new_line, container, i);
 	new_line[i] = '\0';
 	return (new_line);
@@ -93,18 +93,4 @@ char	*get_next_line(int fd)
 	line = get_the_newline(container);
 	container = get_the_reminder(container);
 	return (line);
-}
-
-int main()
-{
-	int fd;
-	char *next;
-	
-	fd = open("file.txt", O_RDONLY);
-	next = get_next_line(fd);
-	printf("%s", next);
-	free(next);
-	next = get_next_line(fd);
-	printf("\n%s", next);
-	free(next);
 }

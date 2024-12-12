@@ -1,4 +1,0 @@
-this is the first line of fd1
-this is the second line of fd1
-this is the third line of fd1
-this is the fourth line of fd1
