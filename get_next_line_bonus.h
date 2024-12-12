@@ -6,7 +6,7 @@
 /*   By: fbicane <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 17:25:28 by fbicane           #+#    #+#             */
-/*   Updated: 2024/12/10 18:38:01 by fbicane          ###   ########.fr       */
+/*   Updated: 2024/12/12 11:24:15 by fbicane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <string.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 33
+#  define BUFFER_SIZE 10
 # endif
 
 # ifndef FD

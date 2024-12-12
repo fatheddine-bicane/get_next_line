@@ -6,7 +6,7 @@
 /*   By: fbicane <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 15:26:17 by fbicane           #+#    #+#             */
-/*   Updated: 2024/12/10 18:25:54 by fbicane          ###   ########.fr       */
+/*   Updated: 2024/12/12 11:19:49 by fbicane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,18 @@ char	*get_next_line(int fd)
 	line = get_the_newline(container);
 	container = get_the_reminder(container);
 	return (line);
+}
+
+int main()
+{
+	int fd;
+	char *next;
+	
+	fd = open("file.txt", O_RDONLY);
+	next = get_next_line(fd);
+	printf("%s", next);
+	free(next);
+	next = get_next_line(fd);
+	printf("\n%s", next);
+	free(next);
 }

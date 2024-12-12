@@ -6,7 +6,7 @@
 /*   By: fbicane <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 17:24:50 by fbicane           #+#    #+#             */
-/*   Updated: 2024/12/10 20:27:04 by fbicane          ###   ########.fr       */
+/*   Updated: 2024/12/12 11:27:08 by fbicane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,15 +97,25 @@ char	*get_next_line(int fd)
 int main()
 {
 	int fd1, fd2, fd3;
+	char *buffer;
 	
 	fd1 = open("file1.txt", O_RDONLY);
 	fd2 = open("file2.txt", O_RDONLY);
 	fd3 = open("file3.txt", O_RDONLY);
-	char *buffer;
-	while ((buffer = get_next_line(42)))
-	{
-		printf("%s",buffer);
-		free(buffer);
-	}
 	
+	buffer = get_next_line(fd1);
+	printf("\n%s", buffer);
+	free(buffer);
+	
+	buffer = get_next_line(fd2);
+	printf("\n%s", buffer);
+	free(buffer);
+	
+	buffer = get_next_line(fd3);
+	printf("\n%s", buffer);
+	free(buffer);
+	
+	buffer = get_next_line(fd1);
+	printf("\n%s", buffer);
+	free(buffer);
 }

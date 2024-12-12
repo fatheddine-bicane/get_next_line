@@ -6,7 +6,7 @@
 /*   By: fbicane <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 15:21:15 by fbicane           #+#    #+#             */
-/*   Updated: 2024/12/10 18:31:48 by fbicane          ###   ########.fr       */
+/*   Updated: 2024/12/12 11:24:19 by fbicane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <stdint.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 10
 # endif
 
 void	*ft_memcpy(void *dest, const void *src, size_t n);
