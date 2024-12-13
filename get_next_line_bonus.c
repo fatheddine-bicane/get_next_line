@@ -6,7 +6,7 @@
 /*   By: fbicane <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 17:24:50 by fbicane           #+#    #+#             */
-/*   Updated: 2024/12/12 14:29:18 by fbicane          ###   ########.fr       */
+/*   Updated: 2024/12/13 17:08:05 by fbicane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,11 @@ char	*get_next_line(int fd)
 {
 	static char	*container[FD];
 	char		*line;
-
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > FD)
-		return (free (container[fd]), NULL);
+//this is a solotion for the offset glitch (when the container still have data even after u close the fd in main)
+	if (fd < 0)
+		return (free(container[fd * -1]), container[fd * -1] = NULL, NULL);
+	if (BUFFER_SIZE <= 0 || fd > FD)
+		return (NULL);
 	if (!container[fd])
 	{
 		container[fd] = malloc(1 * sizeof (char));
